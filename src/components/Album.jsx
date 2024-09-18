@@ -1,11 +1,12 @@
-export default function Album() {
+export default function Album({data}) {
+
+  let {name,tracks} = data;
+
     return (
       <div>
-        Album namn {/* Byt ut mot en variabel. */}
+        <h3>{name} <button>Hide</button></h3>
         <ul>
-          <li>Låt 1</li>
-          <li>Låt 2</li>
-          <li>Låt 3</li>
+          {tracks.map((track,i) => <li key={i}>{track}</li>)}
         </ul>
       </div>
     );
