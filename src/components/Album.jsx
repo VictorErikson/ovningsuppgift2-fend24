@@ -1,11 +1,11 @@
-export default function Album() {
+export default function Album({album}) {
+  const {albumName, tracks} = album;
+
     return (
       <div className="Album">
-        <h3 className="Album-title">Album namn</h3> {/* Byt ut mot en variabel. */}
+        <h3 className="Album-title">{albumName}</h3>
         <ul>
-          <li>Låt 1</li>
-          <li>Låt 2</li>
-          <li>Låt 3</li>
+          {tracks.map((track,i) => <li key={i}>{track}</li>)}
         </ul>
       </div>
     );
