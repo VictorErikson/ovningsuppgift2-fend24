@@ -1,12 +1,18 @@
-export default function Album() {
+import { useState } from "react";
+
+export default function Album({album}) {
+  const {title, songs} = album;
+
+    const [showAlbum, setShowAlbum] = useState(true)
     return (
       <div className="Album">
-        <h3 className="Album-title">Album namn</h3> {/* Byt ut mot en variabel. */}
+        <h3 className="Album-title">{title}</h3>
+        {showAlbum && (
         <ul>
-          <li>Låt 1</li>
-          <li>Låt 2</li>
-          <li>Låt 3</li>
+          {songs.map((song, i)=> (<li key={i}>{song.title}</li>))}
         </ul>
+        )}
+        <button onClick={() => setShowAlbum(!showAlbum)}>visa/dölj</button>
       </div>
     );
   }
