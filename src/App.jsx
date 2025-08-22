@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import './App.css'
 import AlbumList from "./components/AlbumList";
 
 function App() {
-  const myAlbums = [
+   const [darkMode, setDarkMode] = useState(true);
+   const [albums, setAlbums] = useState([
   {
     albumName: "Midnight Vibes",
     tracks: ["Starry Night", "City Lights", "Dreamscape"]
@@ -15,13 +17,18 @@ function App() {
     albumName: "Winter Tales",
     tracks: ["Snowfall", "Frozen Lake", "Silent Night"]
   }
-];
-
+])
 
   return (
-    <div className="App">
+    <div className={darkMode ? "App" : "App light-mode"}>
+      <button onClick={() => {
+        console.log(darkMode);
+        setDarkMode(!darkMode)
+      }
+      
+      }>Change mode</button>
       <h1>My albums</h1>
-      <AlbumList albums={myAlbums} />
+      <AlbumList albums={albums} />
     </div>
   );
 }
